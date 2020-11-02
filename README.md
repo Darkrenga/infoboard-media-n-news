@@ -18,13 +18,13 @@
 
 
 ### MVC
-* MODEL
-API - Links til dokumentationen og endpointsne
+* MODEL <br>
+API - Links til dokumentationen og endpointsne <br>
 
 
-* VIEW
-Sæt data ind i HTRML
+* VIEW <br>
+Sæt data ind i HTML <br>
 
-* CONTROLLER
-Fetch - Data from API
+* CONTROLLER <br>
+Fetch - Data from API <br>
 Sorter data 
