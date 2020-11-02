@@ -21,13 +21,16 @@
 * MODEL <br>
 API - Links til dokumentationen og endpointsne <br>
 [API - Link](https://www.api.mediehuset.net) <br>
-[API - Endpoint - Media](https://api.mediehuset.net/infoboard/media) <br>
 [API - Endpoint - News](https://api.mediehuset.net/infoboard/news) <br>
 
+JSON data { id, title, content, timestamp, datetime}
+
+Til News skal vi bruge title, content, datetime.
 
 * VIEW <br>
-Sæt data ind i HTML <br>
+Brug data fra vores sorter, og put det i vores DOM (lav et nyt card som indeholder: title, content, datetime).
 
 * CONTROLLER <br>
-Fetch - Data from API <br>
-Sorter data 
+Fetch - Data from URI <br>
+Sorter data i fetch og send array med vores results til ny sorterings function.
+I sorterings function skal man kunne converter vores Content String til at undlade HTML tags/elements, derefter pass videre til View, title, sorted content, og datetime.
