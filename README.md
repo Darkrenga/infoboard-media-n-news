@@ -20,6 +20,9 @@
 ### MVC
 * MODEL <br>
 API - Links til dokumentationen og endpointsne <br>
+[API - Link](https://www.api.mediehuset.net)
+[API - Endpoint - Media](https://api.mediehuset.net/infoboard/media)
+[API - Endpoint - News](https://api.mediehuset.net/infoboard/news)
 
 
 * VIEW <br>
