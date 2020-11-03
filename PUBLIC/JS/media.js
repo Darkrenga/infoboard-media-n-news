@@ -41,6 +41,7 @@ function sortingMedia (data) {
 //Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
 function creatingMedia(title, file, ref) {
     if (ref){
+        console.log(ref);
         insertVideos("https://www.youtube.com/embed/" + ref);
     } else if(file) {
         console.log("IM A TOTALLY TRUE IMAGE");
