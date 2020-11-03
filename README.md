@@ -20,12 +20,13 @@
 ### MVC
 * MODEL <br>
 API - Links til dokumentationen og endpointsne <br>
-[API - Link](https://www.api.mediehuset.net) <br>
+[API - Documentation](https://documenter.getpostman.com/view/6540576/TVCZaAub) <br>
 [API - Endpoint - News](https://api.mediehuset.net/infoboard/news) <br>
-
 JSON data { id, title, content, timestamp, datetime}
 
-Til News skal vi bruge title, content, datetime.
+Til News skal vi bruge title, content, datetime. <br>
+
+[API - Endpoint - Media](https://api.mediehuset.net/infoboard/media) <br>
 
 * VIEW <br>
 Brug data fra vores sorter, og put det i vores DOM (lav et nyt card som indeholder: title, content, datetime).
