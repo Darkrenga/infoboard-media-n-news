@@ -22,11 +22,12 @@
 API - Links til dokumentationen og endpointsne <br>
 [API - Documentation](https://documenter.getpostman.com/view/6540576/TVCZaAub) <br>
 [API - Endpoint - News](https://api.mediehuset.net/infoboard/news) <br>
-JSON data { id, title, content, timestamp, datetime}
-
-Til News skal vi bruge title, content, datetime. <br>
-
+JSON data { id, title, content, timestamp, datetime} <br>
+Til News skal vi bruge title, content, datetime. <br> <br>
 [API - Endpoint - Media](https://api.mediehuset.net/infoboard/media) <br>
+JSON data { title, reference, file } <br>
+Media bruges til at få billedere og videoer ud <br> <br>
+Nyheder, ude i den virkelige verden, API!
 
 * VIEW <br>
 Brug data fra vores sorter, og put det i vores DOM (lav et nyt card som indeholder: title, content, datetime).
