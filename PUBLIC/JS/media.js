@@ -12,12 +12,18 @@
 //insertVideo(link); - link = youtube linket
 //Skaber en iframe og sætter src til linket vi får fra creatingMedia og appender det til vores DOM
 
+//=============================================   Should I run   ========================================//
+const shouldIrun = true;
+
+if (shouldIrun) {
+    let getData = newsContent('https://api.mediehuset.net/infoboard/media');
+}
+
 //=============================================   Globale varibler   ========================================//
 const API = 'https://api.mediehuset.net'
 const ENDPOINT_NEWS = '/infoboard/news';
 const ENDPOINT_MEDIA = '/infobard/media';
 
-let getData = newsContent('https://api.mediehuset.net/infoboard/media');
 
 //=============================================   Fetch af data   ========================================//
 function newsContent(apiUrl) {
