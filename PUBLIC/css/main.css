@@ -6,6 +6,10 @@ body {
   background-color: #8891A1;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .infoboard {
   display: -ms-grid;
   display: grid;
@@ -68,9 +72,9 @@ body {
 
 .newsSlider {
   position: absolute;
-  bottom: -135px;
+  bottom: -101px;
   right: 0px;
   height: 71px;
   background-color: #414B6C;
-  width: 1430px;
+  width: 1431px;
 }
