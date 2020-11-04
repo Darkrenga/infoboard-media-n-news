@@ -19,40 +19,53 @@ const ENDPOINT_MEDIA = '/infobard/media';
 
 let getData = newsContent('https://api.mediehuset.net/infoboard/media');
 
+// Youtube API
+let tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 //=============================================   Fetch af data   ========================================//
 function newsContent(apiUrl) {
     fetch(apiUrl)
-    .then((res) => {  return res.json();  })
-    .then((data) => {  sortingMedia(data.result); })
+        .then((res) => { return res.json(); })
+        .then((data) => { sortingMedia(data.result); })
 }
 
 //=============================================   Sorting af data   ========================================//
-function sortingMedia (data) {
+let sortArr = Array();
+function sortingMedia(data) {
     for (let media of data) {
-        let title = media.title;
-        let file = media.file;
         let ref = media.reference;
-        creatingMedia(title, file, ref)
+        sortArr.push(ref)
     }
 }
 
-//=============================================   Sorting af data type   ========================================//
-//Ting vi skal gøre
-//Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
-function creatingMedia(title, file, ref) {
-    if (ref){
-        insertVideos("https://www.youtube.com/embed/" + ref);
-    } else if(file) {
-        console.log("IM A TOTALLY TRUE IMAGE");
-    } else {
-        console.log("Someone decided not to give a path at ALL!");
-    }
+//=============================================   Vis Video  ========================================//
+let player;
+function onYouTubeIframeAPIReady(slides) {
+
+    player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: sortArr[1],
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
 }
 
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
 
-//=============================================   Indsæt video  ========================================//
-function insertVideos (link) {
-    let iframe = document.createElement('iframe');
-    iframe.setAttribute('src', link);
-    document.getElementById('wrapper').appendChild(iframe);
+let slide = 1;
+let done = false;
+function onPlayerStateChange(event) {
+    if (event.data == 0) {
+        slide == sortArr.length ? slide = 1 : slide++
+        player.loadVideoById(sortArr[slide])
+        done = true;
+    }
 }
