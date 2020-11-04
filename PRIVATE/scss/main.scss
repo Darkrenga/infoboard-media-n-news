@@ -1,5 +1,76 @@
+$bg-color: #8891A1;
+$card-color: #3F4259;
+
+
 body{
     font-family: sans-serif;
-    font-size: 10px;
-    color: red;
+    margin: 0;
+    width: 1920px;
+    height: 1080px;
+    background-color: $bg-color;
+   
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.infoboard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.leftSection{
+    background-color: $card-color;
+    height: 1080px;
+}
+
+.middleSection{
+    height: 300px;
+    padding: 12px 0 0 13px;
+    box-sizing: border-box;
+    .info{
+        width: 660px;
+        background-color: $card-color;
+        height: 68px;
+        margin-bottom: 13px;
+    }
+    .media{
+        width: 660px;
+        height: 311px;
+        background-color: $card-color;
+        margin-bottom: 13px;
+    }
+    .newsCard{
+        height: 232px;
+        margin-bottom: 13px;
+        width: 660px;
+        background-color: $card-color;
+    }
+}
+
+.rightSection{
+    height: 300px;
+    padding: 12px 13px 0 13px;
+    box-sizing: border-box;
+    .activity{
+        width: 732px;
+        background-color: $card-color;
+        height: 68px;
+        margin-bottom: 13px;
+    }
+    .activityInfo{
+        height: 916px;
+        width: 732px;
+        background-color: $card-color;
+    }
+}
+
+.newsSlider{
+    position: absolute;
+    bottom: -101px;
+    right: 0px;
+    height: 71px;
+    background-color: #414B6C;
+    width: 1431px;
 }
