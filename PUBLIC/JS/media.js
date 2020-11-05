@@ -56,6 +56,7 @@ function onYouTubeIframeAPIReady(slides) {
             'onStateChange': onPlayerStateChange
         }
     });
+}
 
 //=============================================   Sorting af data type   ========================================//
 //Ting vi skal gøre
