@@ -63,6 +63,7 @@ function onYouTubeIframeAPIReady(slides) {
 //Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
 function creatingMedia(title, file) {
     if(file) {
+        //Få faking henz til at give link til billede
         console.log("IM A TOTALLY TRUE IMAGE");
     } else {
         console.log("Someone decided not to give a path at ALL!");
@@ -81,5 +82,3 @@ function onPlayerStateChange(event) {
         player.loadVideoById(sortArr[slide])
     }
 }
-
-

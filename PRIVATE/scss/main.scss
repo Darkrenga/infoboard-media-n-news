@@ -56,7 +56,7 @@ body{
             
         }
     }
-    .media{
+    #player{
         width: 660px;
         height: 311px;
         background-color: $card-color;
@@ -127,26 +127,41 @@ body{
     }
 }
 
-.newsSlider{
+.newsSlider {
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 1% auto;
+    -ms-grid-columns: 1% auto;
+        grid-template-columns: 1% auto;
+    align-items: center;
     position: absolute;
+    overflow: hidden;
     bottom: -101px;
     right: 0px;
     height: 71px;
     background-color: #414B6C;
     width: 1431px;
-
-    img {
-        height: 71px;
-        z-index: 2;
-    }
-
-    p {
-        font-size: 28px;
-        color: $text-color;
-        overflow: hidden;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-}
+  }
+  
+  .newsSlider img {
+    height: 71px;
+    z-index: 2;
+  }
+  
+  .newsSlider .checkOverflow {
+    display: flex;
+    list-style-type: none;
+    position: absolute;
+    text-overflow: clip;
+  }
+  
+  .news-list__item {
+    text-overflow: clip;
+    white-space: nowrap;
+    margin-left: 20px;
+    color: white;
+  }
+  
+  .news-list__item::after {
+    content: '|';
+    padding-left: 20px;
+  }
