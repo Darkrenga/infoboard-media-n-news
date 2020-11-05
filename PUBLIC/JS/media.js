@@ -12,54 +12,73 @@
 //insertVideo(link); - link = youtube linket
 //Skaber en iframe og sætter src til linket vi får fra creatingMedia og appender det til vores DOM
 
-//=============================================   Should I run   ========================================//
-const shouldIrun = true;
-
-if (shouldIrun) {
-    let getData = newsContent('https://api.mediehuset.net/infoboard/media');
-}
-
 //=============================================   Globale varibler   ========================================//
 const API = 'https://api.mediehuset.net'
 const ENDPOINT_NEWS = '/infoboard/news';
 const ENDPOINT_MEDIA = '/infobard/media';
 
+let getData = mediaContent('https://api.mediehuset.net/infoboard/media');
+
+// Youtube API
+let tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 //=============================================   Fetch af data   ========================================//
-function newsContent(apiUrl) {
+function mediaContent(apiUrl) {
     fetch(apiUrl)
-    .then((res) => {  return res.json();  })
-    .then((data) => {  sortingMedia(data.result); })
+        .then((res) => { return res.json(); })
+        .then((data) => { sortingMedia(data.result); })
 }
 
 //=============================================   Sorting af data   ========================================//
-function sortingMedia (data) {
+let sortArr = Array();
+function sortingMedia(data) {
     for (let media of data) {
-        let title = media.title;
-        let file = media.file;
         let ref = media.reference;
-        creatingMedia(title, file, ref)
+        sortArr.push(ref)
+      creatingMedia(media.title, media.file);
     }
 }
+
+
+//=============================================   Vis Video  ========================================//
+let player;
+function onYouTubeIframeAPIReady(slides) {
+
+    player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: sortArr[1],
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
 
 //=============================================   Sorting af data type   ========================================//
 //Ting vi skal gøre
 //Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
-function creatingMedia(title, file, ref) {
-    if (ref){
-        console.log(ref);
-        insertVideos("https://www.youtube.com/embed/" + ref);
-    } else if(file) {
+function creatingMedia(title, file) {
+    if(file) {
         console.log("IM A TOTALLY TRUE IMAGE");
     } else {
         console.log("Someone decided not to give a path at ALL!");
     }
 }
 
-
-//=============================================   Indsæt video  ========================================//
-function insertVideos (link) {
-    let iframe = document.createElement('iframe');
-    iframe.setAttribute('src', link);
-    document.getElementById('wrapper').appendChild(iframe);
+function onPlayerReady(event) {
+    event.target.playVideo();
 }
+
+
+let slide = 1;
+function onPlayerStateChange(event) {
+    if (event.data == 0) {
+        slide == sortArr.length ? slide = 1 : slide++
+        player.loadVideoById(sortArr[slide])
+    }
+}
+
+
