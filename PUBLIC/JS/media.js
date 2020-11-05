@@ -61,11 +61,9 @@ function onPlayerReady(event) {
 }
 
 let slide = 1;
-let done = false;
 function onPlayerStateChange(event) {
     if (event.data == 0) {
         slide == sortArr.length ? slide = 1 : slide++
         player.loadVideoById(sortArr[slide])
-        done = true;
     }
 }
