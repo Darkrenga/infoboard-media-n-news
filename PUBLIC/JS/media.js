@@ -17,7 +17,7 @@ const API = 'https://api.mediehuset.net'
 const ENDPOINT_NEWS = '/infoboard/news';
 const ENDPOINT_MEDIA = '/infobard/media';
 
-let getData = newsContent('https://api.mediehuset.net/infoboard/media');
+let getData = mediaContent('https://api.mediehuset.net/infoboard/media');
 
 // Youtube API
 let tag = document.createElement('script');
@@ -26,7 +26,7 @@ let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 //=============================================   Fetch af data   ========================================//
-function newsContent(apiUrl) {
+function mediaContent(apiUrl) {
     fetch(apiUrl)
         .then((res) => { return res.json(); })
         .then((data) => { sortingMedia(data.result); })
@@ -38,8 +38,10 @@ function sortingMedia(data) {
     for (let media of data) {
         let ref = media.reference;
         sortArr.push(ref)
+      creatingMedia(media.title, media.file);
     }
 }
+
 
 //=============================================   Vis Video  ========================================//
 let player;
@@ -54,11 +56,22 @@ function onYouTubeIframeAPIReady(slides) {
             'onStateChange': onPlayerStateChange
         }
     });
+
+//=============================================   Sorting af data type   ========================================//
+//Ting vi skal gøre
+//Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
+function creatingMedia(title, file) {
+    if(file) {
+        console.log("IM A TOTALLY TRUE IMAGE");
+    } else {
+        console.log("Someone decided not to give a path at ALL!");
+    }
 }
 
 function onPlayerReady(event) {
     event.target.playVideo();
 }
+
 
 let slide = 1;
 function onPlayerStateChange(event) {
@@ -67,3 +80,5 @@ function onPlayerStateChange(event) {
         player.loadVideoById(sortArr[slide])
     }
 }
+
+
