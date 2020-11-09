@@ -38,7 +38,6 @@ function sortingMedia(data) {
     for (let media of data) {
         let ref = media.reference;
         sortArr.push(ref)
-        creatingMedia(media.title, media.file);
     }
 }
 
@@ -66,7 +65,7 @@ function onYouTubeIframeAPIReady(slides) {
 //Ting vi skal gøre
 //Autoplay og mute, Karussel for Media tingetang, Køre nyt iteration efter videon er færdig 
 function creatingMedia(title, file) {
-    if (file) {
+    if(file) {
         //Få faking henz til at give link til billede
         console.log("IM A TOTALLY TRUE IMAGE");
     } else {
