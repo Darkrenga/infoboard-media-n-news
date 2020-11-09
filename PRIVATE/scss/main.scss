@@ -1,6 +1,8 @@
 $bg-color: #8891A1;
 $card-color: #3F4259;
 $text-color: #fff; 
+$duration: 50s;
+
 * {
     margin: 0;
     padding: 0;
@@ -92,15 +94,9 @@ body{
             font-size: 18px;
             color: $text-color;
             margin: 10px;
+            margin-top: 30px;
         }
-        .news-head {
-            display: grid;
-            grid-template-columns: auto 105px;
-            .qr-kode {
-                position: relative;
-                height: 80px;
-            }  
-        }
+
         .qr-text {
             margin-left: 60%;
             font-size: 16px;
@@ -108,9 +104,10 @@ body{
         }
 
         .qr-kode {
-            position: relative;
-            height: 80px;
-
+            position: absolute;
+            top: 430px;
+            right: 42%;
+            height: 75px;
         }
     }
 }
@@ -132,41 +129,76 @@ body{
     }
 }
 
-.newsSlider {
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+
+.ticker-wrap {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1% auto;
-        grid-template-columns: 1% auto;
+    grid-template-columns: 1% auto;
     align-items: center;
     position: absolute;
     overflow: hidden;
-    bottom: -10.3vh;
-    right: 0vw;
+    bottom: -101px;
+    right: 0px;
     height: 71px;
     background-color: #414B6C;
     width: 1431px;
-  }
-  
-  .newsSlider img {
-    height: 71px;
-    z-index: 2;
-  }
-  
-  .newsSlider .checkOverflow {
-    display: flex;
-    list-style-type: none;
-    position: absolute;
-    text-overflow: clip;
-  }
-  
-  .news-list__item {
-    text-overflow: clip;
+    img{
+        height: 71px;
+        z-index: 2;
+    }
+  .ticker {
+
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;  
     white-space: nowrap;
-    margin-left: 20px;
-    color: white;
+    padding-right: 100%;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite; 
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+   -webkit-animation-name: ticker;
+           animation-name: ticker;
+    -webkit-animation-duration: $duration;
+            animation-duration: $duration;
+
+    &__item {
+      display: inline-block;
+      padding: 0 2rem;
+      font-size: 2rem;
+      color: white;   
+
+    }
+
   }
-  
-  .news-list__item::after {
-    content: '|';
-    padding-left: 20px;
-  }
+
+}

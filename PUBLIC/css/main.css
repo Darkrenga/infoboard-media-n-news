@@ -99,18 +99,7 @@ body::-webkit-scrollbar {
   font-size: 18px;
   color: #fff;
   margin: 10px;
-}
-
-.middleSection .newsCard .news-head {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 105px;
-      grid-template-columns: auto 105px;
-}
-
-.middleSection .newsCard .news-head .qr-kode {
-  position: relative;
-  height: 80px;
+  margin-top: 30px;
 }
 
 .middleSection .newsCard .qr-text {
@@ -120,8 +109,10 @@ body::-webkit-scrollbar {
 }
 
 .middleSection .newsCard .qr-kode {
-  position: relative;
-  height: 80px;
+  position: absolute;
+  top: 430px;
+  right: 42%;
+  height: 75px;
 }
 
 .rightSection {
@@ -144,7 +135,31 @@ body::-webkit-scrollbar {
   background-color: #3F4259;
 }
 
-.newsSlider {
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1% auto;
@@ -154,35 +169,39 @@ body::-webkit-scrollbar {
           align-items: center;
   position: absolute;
   overflow: hidden;
-  bottom: -10.3vh;
-  right: 0vw;
+  bottom: -101px;
+  right: 0px;
   height: 71px;
   background-color: #414B6C;
   width: 1431px;
 }
 
-.newsSlider img {
+.ticker-wrap img {
   height: 71px;
   z-index: 2;
 }
 
-.newsSlider .checkOverflow {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  position: absolute;
-  text-overflow: clip;
-}
-
-.news-list__item {
-  text-overflow: clip;
+.ticker-wrap .ticker {
+  display: inline-block;
+  height: 4rem;
+  line-height: 4rem;
   white-space: nowrap;
-  margin-left: 20px;
-  color: white;
+  padding-right: 100%;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 50s;
+  animation-duration: 50s;
 }
 
-.news-list__item::after {
-  content: '|';
-  padding-left: 20px;
+.ticker-wrap .ticker__item {
+  display: inline-block;
+  padding: 0 2rem;
+  font-size: 2rem;
+  color: white;
 }

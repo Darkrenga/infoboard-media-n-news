@@ -1,51 +1,27 @@
-const newsSlider = document.querySelector('.newsSlider')
+const newsSlider = document.querySelector('.ticker-wrap')
 
 const fetchNews = (async function () {
     const url = 'https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=PgarRRswJ13m0Wn8kjUyvC7cBp2SfSyh';
     const response = await fetch(url);
     const data = await response.json();
-    await resetSlider(data.results)
+    await loopData(data.results)
 }());
 
 let oldArray = Array();
-function resetSlider(data) {
-    oldArray.push(data.map(item => item.title));
+function loopData(data) {
 
-    createSlider(oldArray)
-}
-
-// function isOverflown(element) {
-//     const bounds = newsSlider.getBoundingClientRect().left;
-//     const elementBounds = element.getBoundingClientRect().left;
-//     return bounds > elementBounds;
-// }
-
-async function createSlider(oldArray) {
-
-    let ul = document.createElement('ul');
-    ul.setAttribute('class', 'checkOverflow');
-    newsSlider.appendChild(ul);
-    reWrite(oldArray[0])
-
-    oldArray[0].map(item => {
-        ul.innerHTML += `<li class="news-list__item">${item}</li>`
-        setInterval(() => { animateChildren(ul) }, 3000)
-    });
-}
-
-let length = 0;
-function animateChildren(ul) {
-    for (let children of ul.children) {
-        length--
-        children.style.transform = `translateX(${length + 'px'})`
-        children.style.transition = '20s linear';
+    for (const newsTitle of data) {
+        oldArray.push(newsTitle.title)
     }
+
+    createSlider(oldArray);
 }
 
-function reWrite(oldArray) {
-    const ul = document.querySelector('.checkOverflow');
-    console.log(ul)
-    // const filter = oldArray.filter((item, index) => oldArray.indexOf(ul.children[0].innerHTML) == index)
-    // oldArray.push(filter[0])
-    // console.log(oldArray)
+function createSlider(value) {
+    let div = document.createElement('div');
+    div.setAttribute('class', 'ticker');
+    for (const news of value) {
+        div.innerHTML += `<div class="ticker__item">${news}</li>`
+    }
+    newsSlider.appendChild(div);
 }
