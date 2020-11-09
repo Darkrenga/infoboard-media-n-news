@@ -47,13 +47,16 @@ function checkForLength(title, date, string, qrCode) {
 
     newsCard.innerHTML += `
         <p class="news-date">${date}</p>
+        <section class="news-head">
         <h3 class="news-header">${title}</h3>
+        <img class="qr-kode" src="${qrCode}" alt="">
+        </section>
         <p class="news-content">${string}</p>`
 
     if (string.length > 250) {
         newsCard.insertAdjacentHTML('beforeend', `        
         <p class="qr-text">LÆS MERE SKAN QR KODEN</p>
-        <img class="qr-kode" src="${qrCode}" alt="">`)
+        `)
     }
     newsContainer.appendChild(newsCard);
 }

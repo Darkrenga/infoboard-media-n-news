@@ -99,7 +99,18 @@ body::-webkit-scrollbar {
   font-size: 18px;
   color: #fff;
   margin: 10px;
-  margin-top: 30px;
+}
+
+.middleSection .newsCard .news-head {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 105px;
+      grid-template-columns: auto 105px;
+}
+
+.middleSection .newsCard .news-head .qr-kode {
+  position: relative;
+  height: 80px;
 }
 
 .middleSection .newsCard .qr-text {
@@ -109,10 +120,8 @@ body::-webkit-scrollbar {
 }
 
 .middleSection .newsCard .qr-kode {
-  position: absolute;
-  top: 430px;
-  right: 42%;
-  height: 75px;
+  position: relative;
+  height: 80px;
 }
 
 .rightSection {
@@ -145,8 +154,8 @@ body::-webkit-scrollbar {
           align-items: center;
   position: absolute;
   overflow: hidden;
-  bottom: -101px;
-  right: 0px;
+  bottom: -10.3vh;
+  right: 0vw;
   height: 71px;
   background-color: #414B6C;
   width: 1431px;

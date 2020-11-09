@@ -92,9 +92,15 @@ body{
             font-size: 18px;
             color: $text-color;
             margin: 10px;
-            margin-top: 30px;
         }
-
+        .news-head {
+            display: grid;
+            grid-template-columns: auto 105px;
+            .qr-kode {
+                position: relative;
+                height: 80px;
+            }  
+        }
         .qr-text {
             margin-left: 60%;
             font-size: 16px;
@@ -102,10 +108,9 @@ body{
         }
 
         .qr-kode {
-            position: absolute;
-            top: 430px;
-            right: 42%;
-            height: 75px;
+            position: relative;
+            height: 80px;
+
         }
     }
 }
@@ -135,8 +140,8 @@ body{
     align-items: center;
     position: absolute;
     overflow: hidden;
-    bottom: -101px;
-    right: 0px;
+    bottom: -10.3vh;
+    right: 0vw;
     height: 71px;
     background-color: #414B6C;
     width: 1431px;
